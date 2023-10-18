@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+
+// Базовий клас "Живий організм"
+class ЖивийОрганізм
+{
+    public double Енергія { get; set; }
+    public int Вік { get; set; }
+    public double Розмір { get; set; }
+}
+
+// Спадкоємні класи
+class Тварина : ЖивийОрганізм, IReproducible, IPredator
+{
+    public string Вид { get; set; }
+    public void Розмноження() { /* Реалізація розмноження тварин */ }
+    public void Полювання() { /* Реалізація полювання тварин */ }
+}
+
+class Рослина : ЖивийОрганізм, IReproducible
+{
+    public string Вид { get; set; }
+    public void Розмноження() { /* Реалізація розмноження рослин */ }
+}
+
+class Мікроорганізм : ЖивийОрганізм, IReproducible
+{
+    public string Вид { get; set; }
+    public void Розмноження() { /* Реалізація розмноження мікроорганізмів */ }
+}
+
+// Інтерфейси
+interface IReproducible
+{
+    void Розмноження();
+}
+
+interface IPredator
+{
+    void Полювання();
+}
+
+// Клас "Екосистема"
+class Екосистема
+{
+    private List<ЖивийОрганізм> організми;
+
+    public Екосистема()
+    {
+        організми = new List<ЖивийОрганізм>();
+    }
+
+    public void ДодатиОрганізм(ЖивийОрганізм організм)
+    {
+        організми.Add(організм);
+    }
+
+    public void Взаємодія()
+    {
+
+    }
+}
